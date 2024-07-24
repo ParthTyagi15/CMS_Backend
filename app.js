@@ -17,6 +17,7 @@ app.use(
     origin: [`https://cms-frontend1.onrender.com`, `https://cms-admin-g1uw.onrender.com`,`http://localhost:5173`, process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
     method: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization "],
   }),
 );
 console.log(process.env.FRONTEND_URL);

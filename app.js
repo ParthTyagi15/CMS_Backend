@@ -14,12 +14,13 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    // origin: ["https://cms-frontend1.onrender.com",process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
-    // method: ["GET", "POST", "DELETE", "PUT"],
-    // credentials: true,
-  })
+    origin: [`https://cms-frontend1.onrender.com`, `https://cms-admin-g1uw.onrender.com`,`http://localhost:5173`, process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
+    method: ["GET", "POST", "DELETE", "PUT"],
+    credentials: true,
+  }),
 );
-
+console.log(process.env.FRONTEND_URL);
+console.log(process.env.DASHBOARD_URL);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

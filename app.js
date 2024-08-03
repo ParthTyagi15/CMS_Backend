@@ -12,12 +12,21 @@ import appointmentRouter from "./router/appointmentRouter.js";
 const app = express();
 config({ path: "./config/config.env" });
 
+app.use((req,res,next)=>{
+  res.setHeader("Access-Control-Allow-Origin","https://cms-frontend1.onrender.com");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With,Content-Type,Accept"
+  );
+  next();
+  });
+
 app.use(
   cors({
-    origin: [`https://cms-frontend1.onrender.com`, `https://cms-admin-g1uw.onrender.com`,`http://localhost:5173`, process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
+    origin: [`https://cms-frontend1.onrender.com`, `https://cms-admin-g1uw.onrender.com`,`http://localhost:5173`, process.env.FRONTEND_URL, process.env.DASHBOARD_URL, "Allow-Control-Allow-Origin"],
     method: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization "],
+    allowedHeaders: ["Content-Type", "Authorization ", "Allow-Control-Allow-Origin", "Access-Control-Allow-Credentials", "Access-Control-Allow-Headers"],
   }),
 );
 console.log(process.env.FRONTEND_URL);
